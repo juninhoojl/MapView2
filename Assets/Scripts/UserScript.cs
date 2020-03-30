@@ -32,11 +32,12 @@ public class UserScript : MonoBehaviour
             else
             {
 
-                lonUser = 1.987563f;  //EETAC
-                latUser = 41.275f;
+                lonUser = 2.122279f;  //EETAC
+                latUser = 41.384616f;
+
                 //lonUser = 2.186369f;  //Casa
                 //latUser = 41.392957f;
-
+                
             }
             double a = DrawCubeX(lonUser, TileToWorldPos(x, y, zoom).X, TileToWorldPos(x + 1, y, zoom).X);
             double b = DrawCubeY(latUser, TileToWorldPos(x, y + 1, zoom).Y, TileToWorldPos(x, y, zoom).Y);
