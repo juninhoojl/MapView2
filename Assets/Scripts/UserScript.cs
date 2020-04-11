@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+using UnityEngine.SceneManagement;
 public class UserScript : MonoBehaviour
 {
     [SerializeField]
@@ -39,12 +39,20 @@ public class UserScript : MonoBehaviour
                 //latUser = 41.392957f;
                 
             }
+
             double a = DrawCubeX(lonUser, TileToWorldPos(x, y, zoom).X, TileToWorldPos(x + 1, y, zoom).X);
             double b = DrawCubeY(latUser, TileToWorldPos(x, y + 1, zoom).Y, TileToWorldPos(x, y, zoom).Y);
+             if (SceneManager.GetActiveScene().name.Contains("Map")){
+        this.transform.position = new Vector3((float)a - 0.5f,(float)b-0.5f, 0.25f);
 
+    }else{
+
+this.transform.position = new Vector3((float)a - 0.5f, 0.25f, (float)b-0.5f);
+
+    }
             Debug.Log("User Position: lon=" + lonUser + ", lat=" + latUser + "//a=" + a + ", b=" + b);
             this.transform.position = new Vector3((float)a - 0.5f, (float)b - 0.5f, 0.0f);
-            gpsDebug.GetComponent<Text>().text = "Lat: " + latUser.ToString() + "\nLon: " + lonUser.ToString();
+            gpsDebug.GetComponent<Text>().text =latUser.ToString() + "\n" + lonUser.ToString();
 
 
             yield return new WaitForSeconds(3);

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 
 
@@ -35,8 +36,20 @@ public class PoiScript: MonoBehaviour
         double a = DrawCubeX(lonObject, TileToWorldPos(x, y, zoom).X, TileToWorldPos(x + 1, y, zoom).X);
         double b = DrawCubeY(latObject, TileToWorldPos(x, y + 1, zoom).Y, TileToWorldPos(x, y, zoom).Y);
 
-        Debug.Log(" Pos" + a + "/" + b);
-        this.transform.position = new Vector3((float)a - 0.5f, (float)b - 0.5f, 0.0f);
+        
+
+    if (SceneManager.GetActiveScene().name.Contains("Map")){
+        this.transform.position = new Vector3((float)a - 0.5f,(float)b-0.5f, 0.0f);
+
+    }else{
+
+this.transform.position = new Vector3((float)a - 0.5f, 0.0f, (float)b-0.5f);
+
+    }
+
+
+
+
     }
     public struct Point
     {
