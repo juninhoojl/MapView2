@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-
+using TMPro;
 
 
 public class PoiScript: MonoBehaviour
@@ -16,13 +16,15 @@ public class PoiScript: MonoBehaviour
     public string textDescription;
 
     public int pkId;
+    
+    //public TextMeshProUGUI textDesc;
 
     GameObject description;
 
     // Start is called before the first frame update
     void Start()
     {
-        description = GameObject.Find("Description");
+        description = GameObject.Find("textDesc");
     }
 
     public void MapLocation()
@@ -94,6 +96,8 @@ public class PoiScript: MonoBehaviour
             o.SendMessage("SetUnpressedColor");
         }
         this.GetComponent<MeshRenderer>().material.color = Color.blue;
-        description.GetComponent<Text>().text = textDescription;
+
+        //textDesc.GetComponent<TextMeshProUGUI>().text = textDescription;
+        description.GetComponent<TextMeshProUGUI>().text = textDescription;
     }
 }

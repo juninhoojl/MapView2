@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using TMPro;
 public class UserScript : MonoBehaviour
 {
-    [SerializeField]
-    Text gpsDebug;
+    public TextMeshProUGUI latText;
+
+    public TextMeshProUGUI lonText;
     double latUser;
     double lonUser;
 
@@ -52,8 +54,10 @@ this.transform.position = new Vector3((float)a - 0.5f, 0.25f, (float)b-0.5f);
     }
             Debug.Log("User Position: lon=" + lonUser + ", lat=" + latUser + "//a=" + a + ", b=" + b);
             this.transform.position = new Vector3((float)a - 0.5f, (float)b - 0.5f, 0.0f);
-            gpsDebug.GetComponent<Text>().text =latUser.ToString() + "\n" + lonUser.ToString();
 
+
+            latText.GetComponent<TextMeshProUGUI>().text =latUser.ToString("F8");
+            lonText.GetComponent<TextMeshProUGUI>().text =lonUser.ToString("F8");
 
             yield return new WaitForSeconds(3);
         }
