@@ -11,7 +11,6 @@ public class OpenDataScript : MonoBehaviour
     void Start()
     {
         
-    
         StartCoroutine("OpenDataBcn");
 
     }
@@ -46,7 +45,6 @@ public class OpenDataScript : MonoBehaviour
                 o.SendMessage("MapLocation");
 
             }
-       
 
         }
         

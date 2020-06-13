@@ -51,8 +51,8 @@ public class MapHandlerScript : MonoBehaviour{
         GameObject objectU = GameObject.Find("User");
         objectU.SendMessage("MapLocation");
 
-         GameObject objectOpenData = GameObject.Find("opendata");
-        objectU.SendMessage("DowloadOpenData");
+        GameObject objectOpenData = GameObject.Find("Opendata");
+        objectOpenData.SendMessage("OpenDataBcn");
 
         StartCoroutine(LoadTile(centerTileX, centerTileY-1, centroA));
         StartCoroutine(LoadTile(centerTileX+1, centerTileY-1, direitaA));
@@ -79,11 +79,11 @@ public class MapHandlerScript : MonoBehaviour{
         tileY = (double)((1.0f - Mathf.Log(Mathf.Tan((float)lat * Mathf.PI / 180.0f) + 1.0f / Mathf.Cos((float)lat * Mathf.PI / 180.0f)) / Mathf.PI) / 2.0f * (1 << zoom));
         centerTileX = Mathf.FloorToInt((float)tileX);
         centerTileY = Mathf.FloorToInt((float)tileY);
-        Debug.Log("X:" + tileX + "Y" + tileY);
+        //Debug.Log("X:" + tileX + "Y" + tileY);
     }
 
     IEnumerator LoadTile(int x, int y, GameObject quadTile){
-        Debug.Log("loadTile");
+       // Debug.Log("loadTile");
         //string uri = "https://a.tile.openstreetmap.org/" + zoom + "/" + x + "/" + y + ".png";
         
         //CustomCertificateHandler certHandler = new CustomCertificateHandler();
@@ -91,11 +91,11 @@ public class MapHandlerScript : MonoBehaviour{
         //www.certificateHandler = certHandler;
         yield return www.SendWebRequest();
 
-        Debug.Log("server");
+       // Debug.Log("server");
         if (www.isNetworkError || www.isHttpError){
             Debug.Log(www.error);
         }else{
-            Debug.Log("Received");
+           // Debug.Log("Received");
             quadTile.GetComponent<MeshRenderer>().material.mainTexture = DownloadHandlerTexture.GetContent(www);
         } 
     }

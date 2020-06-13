@@ -1348,6 +1348,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Otro
       objectReference: {fileID: 0}
+    - target: {fileID: 1971442796829814, guid: f41d7f8a7eda7e44492d76bfc009d4ef, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4948974890293616, guid: f41d7f8a7eda7e44492d76bfc009d4ef, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1532,6 +1536,10 @@ PrefabInstance:
     - target: {fileID: 1971442796829814, guid: f41d7f8a7eda7e44492d76bfc009d4ef, type: 3}
       propertyPath: m_Name
       value: EETAC
+      objectReference: {fileID: 0}
+    - target: {fileID: 1971442796829814, guid: f41d7f8a7eda7e44492d76bfc009d4ef, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4948974890293616, guid: f41d7f8a7eda7e44492d76bfc009d4ef, type: 3}
       propertyPath: m_LocalPosition.x

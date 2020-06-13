@@ -23,8 +23,6 @@ public class PoiScript: MonoBehaviour
     void Start()
     {
         description = GameObject.Find("Description");
-        
-
     }
 
     public void MapLocation()
@@ -43,7 +41,7 @@ public class PoiScript: MonoBehaviour
 
     }else{
 
-this.transform.position = new Vector3((float)a - 0.5f, 0.0f, (float)b-0.5f);
+        this.transform.position = new Vector3((float)a - 0.5f, 0.0f, (float)b-0.5f);
 
     }
 
