@@ -6,9 +6,8 @@ using UnityEngine.SceneManagement;
 using TMPro;
 public class UserScript : MonoBehaviour
 {
-    public TextMeshProUGUI latText;
+    public TextMeshProUGUI latlonText;
 
-    public TextMeshProUGUI lonText;
     double latUser;
     double lonUser;
 
@@ -56,8 +55,8 @@ this.transform.position = new Vector3((float)a - 0.5f, 0.25f, (float)b-0.5f);
             this.transform.position = new Vector3((float)a - 0.5f, (float)b - 0.5f, 0.0f);
 
 
-            latText.GetComponent<TextMeshProUGUI>().text =latUser.ToString("F8");
-            lonText.GetComponent<TextMeshProUGUI>().text =lonUser.ToString("F8");
+            latlonText.GetComponent<TextMeshProUGUI>().text =latUser.ToString("F6")+","+lonUser.ToString("F6");
+            
 
             yield return new WaitForSeconds(3);
         }
