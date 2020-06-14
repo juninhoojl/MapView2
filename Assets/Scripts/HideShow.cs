@@ -25,10 +25,10 @@ public class HideShow : MonoBehaviour
              Debug.Log("objeto");
 
             if(!valor){
-                // f.SetActive(false);
+                 //f.SetActive(false);
                 f.GetComponent<Renderer>().enabled = false;
             }else{
-                /// f.SetActive(true);
+               //  f.SetActive(true);
                 f.GetComponent<Renderer>().enabled = true;
             }
             

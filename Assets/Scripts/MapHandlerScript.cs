@@ -54,6 +54,10 @@ public class MapHandlerScript : MonoBehaviour{
         GameObject objectOpenData = GameObject.Find("Opendata");
         objectOpenData.SendMessage("OpenDataBcn");
 
+        GameObject objectOpenBike = GameObject.Find("Opendata");
+        objectOpenBike.SendMessage("OpenDataBike");
+
+
         StartCoroutine(LoadTile(centerTileX, centerTileY-1, centroA));
         StartCoroutine(LoadTile(centerTileX+1, centerTileY-1, direitaA));
         StartCoroutine(LoadTile(centerTileX-1, centerTileY-1, esquerdaA));
