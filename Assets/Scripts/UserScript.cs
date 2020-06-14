@@ -33,8 +33,9 @@ public class UserScript : MonoBehaviour
             else
             {
 
-                lonUser = 2.122279f;  //EETAC
-                latUser = 41.384616f;
+                    
+                lonUser = 2.122638f;  //EETAC
+                latUser = 41.381580f;
 
                 //lonUser = 2.186369f;  //Casa
                 //latUser = 41.392957f;

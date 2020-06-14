@@ -31,10 +31,12 @@ public class MapHandlerScript : MonoBehaviour{
 
 
     public static int centerTileX, centerTileY;
-    public static int zoom;
+
+    public static int zoom = 15;
 
     public void DownloadMap() {
-        zoom = 13;
+        // zoom vai variar de 10 ate 15
+        //zoom = 15;
         if (Input.location.status == LocationServiceStatus.Running){
             WorldToTilePos(Input.location.lastData.longitude, Input.location.lastData.latitude, zoom);
         }else{
@@ -54,8 +56,8 @@ public class MapHandlerScript : MonoBehaviour{
         GameObject objectOpenData = GameObject.Find("Opendata");
         objectOpenData.SendMessage("OpenDataBcn");
 
-        GameObject objectOpenBike = GameObject.Find("Opendata");
-        objectOpenBike.SendMessage("OpenDataBike");
+        //GameObject objectOpenBike = GameObject.Find("Opendata");
+        //objectOpenBike.SendMessage("OpenDataBike");
 
 
         StartCoroutine(LoadTile(centerTileX, centerTileY-1, centroA));
@@ -71,6 +73,8 @@ public class MapHandlerScript : MonoBehaviour{
         StartCoroutine(LoadTile(centerTileX-1, centerTileY+1, esquerdaC));
 
     }
+
+    
     //public void DownLoadCenterMapTileGps()
     //{
     //    WorldToTilePos(41.275250f, 1.987500f, zoom);

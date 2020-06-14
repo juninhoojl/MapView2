@@ -5,13 +5,15 @@ using Newtonsoft.Json.Linq;
 
 public class OpenDataScript : MonoBehaviour
 {
-[SerializeField]
+    [SerializeField]
     GameObject prefabPoint;
+    [SerializeField]
+    GameObject prefabBike;
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine("OpenDataBcn");
-       // StartCoroutine("OpenDataBike");
+       StartCoroutine("OpenDataBcn");
+       StartCoroutine("OpenDataBike");
 
     }
 
@@ -76,7 +78,7 @@ public class OpenDataScript : MonoBehaviour
 
             if(!nameList.Contains(nameP)){
                 nameList.Add(nameP);
-                GameObject o = Instantiate(prefabPoint);
+                GameObject o = Instantiate(prefabBike);
               //  o.SetActive(true);
                 o.GetComponent<PoiScript>().latObject = lat;
                 o.GetComponent<PoiScript>().lonObject = lon;
