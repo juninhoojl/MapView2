@@ -90,7 +90,7 @@ public class PoiScript: MonoBehaviour
     }
     public void OnMouseDown()
     {
-        GameObject[] poiList = GameObject.FindGameObjectsWithTag("poi");
+        GameObject[] poiList = GameObject.FindGameObjectsWithTag("poiChage");
         foreach (GameObject o in poiList)
         {
             o.SendMessage("SetUnpressedColor");

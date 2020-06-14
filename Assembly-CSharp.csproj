@@ -54,6 +54,7 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\GpsHandlerScript.cs" />
+     <Compile Include="Assets\Scripts\HideShow.cs" />
      <Compile Include="Assets\Scripts\MainMenu.cs" />
      <Compile Include="Assets\Scripts\MapHandlerScript.cs" />
      <Compile Include="Assets\Scripts\OpenDataScript.cs" />
