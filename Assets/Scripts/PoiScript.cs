@@ -44,7 +44,7 @@ public class PoiScript: MonoBehaviour
         
 
     if (SceneManager.GetActiveScene().name.Contains("Map")){
-        this.transform.position = new Vector3((float)a - 0.5f,(float)b-0.5f, 0.0f);
+        this.transform.position = new Vector3((float)a - 0.5f,(float)b-0.5f, -0.02f);
 
     }else{
 

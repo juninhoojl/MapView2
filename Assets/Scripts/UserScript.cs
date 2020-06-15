@@ -143,7 +143,7 @@ public class UserScript : MonoBehaviour
             //float xuf = proxCharge.transform.position.x;
            // float yuf = proxCharge.transform.position.y;
             linhaCharge.positionCount = 2;
-            linhaCharge.SetPosition(0,new Vector3(xu/2,yu/2,-1));
+            linhaCharge.SetPosition(0,new Vector3(xu,yu,-0.01f));
             // linhaCharge.SetPosition(0,new Vector3(xu,yu,-1));
            // linhaCharge.SetPosition(1,new Vector3(xuf,yuf,-1));
 
