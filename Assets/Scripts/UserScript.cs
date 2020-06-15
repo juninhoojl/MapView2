@@ -8,6 +8,8 @@ public class UserScript : MonoBehaviour
 {
     public TextMeshProUGUI latlonText;
 
+    public GameObject painelForaArea;
+
     double latUser;
     double lonUser;
 
@@ -32,9 +34,11 @@ public class UserScript : MonoBehaviour
             }
             else
             {
+                // Teste fora de area
+                // lonUser = 2.122638f;  //EETAC
+                //  latUser = 41.0f;
 
-                    
-                lonUser = 2.122638f;  //EETAC
+                lonUser = 2.122638f;  //Barclona
                 latUser = 41.381580f;
 
                 //lonUser = 2.186369f;  //Casa
@@ -42,23 +46,32 @@ public class UserScript : MonoBehaviour
                 
             }
 
-            double a = DrawCubeX(lonUser, TileToWorldPos(x, y, zoom).X, TileToWorldPos(x + 1, y, zoom).X);
-            double b = DrawCubeY(latUser, TileToWorldPos(x, y + 1, zoom).Y, TileToWorldPos(x, y, zoom).Y);
-             if (SceneManager.GetActiveScene().name.Contains("Map")){
-        this.transform.position = new Vector3((float)a - 0.5f,(float)b-0.5f, 0.25f);
+            // Confere se esta nos intervalos de operacao
 
-    }else{
+            if(latUser > 41.471350 || latUser < 41.317801 || lonUser >2.234448 || lonUser < 2.058771){
 
-this.transform.position = new Vector3((float)a - 0.5f, 0.25f, (float)b-0.5f);
+                // Fora de area
+                painelForaArea.SetActive(true);
 
-    }
-            Debug.Log("User Position: lon=" + lonUser + ", lat=" + latUser + "//a=" + a + ", b=" + b);
-            this.transform.position = new Vector3((float)a - 0.5f, (float)b - 0.5f, 0.0f);
+            }else{
+                painelForaArea.SetActive(false);
+                    
+                double a = DrawCubeX(lonUser, TileToWorldPos(x, y, zoom).X, TileToWorldPos(x + 1, y, zoom).X);
+                double b = DrawCubeY(latUser, TileToWorldPos(x, y + 1, zoom).Y, TileToWorldPos(x, y, zoom).Y);
+                
+                if (SceneManager.GetActiveScene().name.Contains("Map")){
+                    this.transform.position = new Vector3((float)a - 0.5f,(float)b-0.5f, 0.25f);
+                }else{
+                    this.transform.position = new Vector3((float)a - 0.5f, 0.25f, (float)b-0.5f);
+                }
 
+                Debug.Log("User Position: lon=" + lonUser + ", lat=" + latUser + "//a=" + a + ", b=" + b);
+                this.transform.position = new Vector3((float)a - 0.5f, (float)b - 0.5f, 0.0f);
+
+            }
 
             latlonText.GetComponent<TextMeshProUGUI>().text =latUser.ToString("F6")+","+lonUser.ToString("F6");
             
-
             yield return new WaitForSeconds(3);
         }
     }
