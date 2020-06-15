@@ -115,41 +115,13 @@ public class UserScript : MonoBehaviour
         return pixelX;
     }
 
-
-
     void posLinha(){
-        // Escolher chraging mais proximo
-/*
-        GameObject[] poiList = GameObject.FindGameObjectsWithTag("poiChage");
 
-        if (poiList != null || poiList.Length != 0){ // Se tiver algum objeto
-
-            GameObject proxCharge = poiList[0];
-
-        // O primeiro eh o menor
-            foreach (GameObject o in poiList)
-            {
-                // Se mais perto ele eh o menor objeto
-
-                if((Vector3.Distance(o.transform.position, this.transform.position)) < (Vector3.Distance(proxCharge.transform.position, this.transform.position))){
-                    proxCharge = o;
-                }
-
-            }
-*/
-            float xu = this.transform.position.x;
-            float yu = this.transform.position.y;
-
-            //float xuf = proxCharge.transform.position.x;
-           // float yuf = proxCharge.transform.position.y;
-            linhaCharge.positionCount = 2;
-            linhaCharge.SetPosition(0,new Vector3(xu,yu,-0.01f));
-            // linhaCharge.SetPosition(0,new Vector3(xu,yu,-1));
-           // linhaCharge.SetPosition(1,new Vector3(xuf,yuf,-1));
-
-      //  }
-
+        // Somente lado do usuario
+        float xu = this.transform.position.x;
+        float yu = this.transform.position.y;
+        linhaCharge.positionCount = 2;
+        linhaCharge.SetPosition(0,new Vector3(xu,yu,-0.01f));
     }
 
 }
-
