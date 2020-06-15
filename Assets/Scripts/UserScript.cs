@@ -15,6 +15,9 @@ public class UserScript : MonoBehaviour
 
     public LineRenderer linhaCharge;
 
+
+    public LineRenderer linhaPertoBike;
+
     public void MapLocation()
     {
         StartCoroutine(Relocation());
@@ -75,6 +78,7 @@ public class UserScript : MonoBehaviour
                 this.transform.position = new Vector3((float)a - 0.5f, (float)b - 0.5f, 0.0f);
                 
                 posLinha();
+                distanciaProx();
             }
 
             latlonText.GetComponent<TextMeshProUGUI>().text =latUser.ToString("F6")+","+lonUser.ToString("F6");
@@ -122,6 +126,47 @@ public class UserScript : MonoBehaviour
         float yu = this.transform.position.y;
         linhaCharge.positionCount = 2;
         linhaCharge.SetPosition(0,new Vector3(xu,yu,-0.01f));
+        linhaPertoBike.positionCount=2;
+        linhaPertoBike.SetPosition(0,new Vector3(xu,yu,-0.01f));
+        // Posicao do user na outra linha tb
+
+    }
+
+
+    public float calcDist(GameObject ponto){
+
+        Vector2 vecponto = ponto.transform.position;
+        Vector2 vecuser = this.transform.position;
+
+        return ((vecponto - vecuser).sqrMagnitude);
+    }
+
+    void distanciaProx(){
+
+        GameObject[] poiListBike = GameObject.FindGameObjectsWithTag("poiBike");
+        bool primeiro = true;
+        GameObject maisPertoBike = new GameObject();
+        foreach(GameObject o in poiListBike)
+        {
+            if(primeiro){
+                maisPertoBike = o;
+                primeiro = false;
+            }else{
+                if(calcDist(o)<calcDist(maisPertoBike)){
+                    maisPertoBike = o;
+                }
+            }
+
+            Debug.Log("Distancia = "+calcDist(o));
+
+            // Escolhe o que tem menor distancia e salva obj
+        }
+
+        Vector2 vecpontoBike = maisPertoBike.transform.position;
+        float xbikep = vecpontoBike.x;
+        float ybikep = vecpontoBike.y;
+        linhaPertoBike.SetPosition(1,new Vector3(xbikep,ybikep,-0.01f));
+
     }
 
 }
