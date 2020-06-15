@@ -27,13 +27,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1971442796829814}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.04, y: 0.04, z: 0.04}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!33 &33725874530890208
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -59,7 +59,7 @@ MeshRenderer:
   m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 868d026103e45714587f6c2d39cdb311, type: 2}
+  - {fileID: 2100000, guid: 2d69c83799cb448c2b6ab575053be961, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -108,3 +108,5 @@ MonoBehaviour:
   lonObject: 1.987563
   textDescription: EETAC School
   pkId: 0
+  bikeSelected: {fileID: 2800000, guid: c4ba79a5e24864fe1a80b2647eac5024, type: 3}
+  bikeNormal: {fileID: 2800000, guid: bceb398a4bf6747e7b1ea1a91c78d6da, type: 3}

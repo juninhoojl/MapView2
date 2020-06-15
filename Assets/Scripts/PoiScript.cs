@@ -19,7 +19,10 @@ public class PoiScript: MonoBehaviour
     
     //public TextMeshProUGUI textDesc;
 
+    public Texture bikeSelected;
+    public Texture bikeNormal;
 
+    
 
     GameObject description;
 
@@ -86,7 +89,9 @@ public class PoiScript: MonoBehaviour
 
     public void SetUnpressedColor()
     {
-        this.GetComponent<MeshRenderer>().material.color = Color.red;
+
+        this.GetComponent<MeshRenderer>().material.mainTexture = bikeNormal;
+        //this.GetComponent<MeshRenderer>().material.color = Color.red;
     }
     public void OnMouseDown()
     {
@@ -106,7 +111,8 @@ public class PoiScript: MonoBehaviour
                 o.SendMessage("SetUnpressedColor");
             }
 
-            this.GetComponent<MeshRenderer>().material.color = Color.blue;
+            this.GetComponent<MeshRenderer>().material.mainTexture = bikeSelected;
+            //this.GetComponent<MeshRenderer>().material.color = Color.blue;
 
             //textDesc.GetComponent<TextMeshProUGUI>().text = textDescription;
             description.GetComponent<TextMeshProUGUI>().text = textDescription;
