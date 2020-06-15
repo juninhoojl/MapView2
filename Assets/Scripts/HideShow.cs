@@ -6,7 +6,7 @@ public class HideShow : MonoBehaviour
 {
     public void ShowObjects(bool valor){
 
-        GameObject[] poiList = GameObject.FindGameObjectsWithTag("poiChage");
+        GameObject[] poiList = GameObject.FindGameObjectsWithTag("poiBike");
 
         foreach(GameObject f in poiList){
              Debug.Log("objeto");
@@ -25,7 +25,7 @@ public class HideShow : MonoBehaviour
 
         public void ShowObjectsBike(bool valor){
 
-        GameObject[] poiList = GameObject.FindGameObjectsWithTag("poiBike");
+        GameObject[] poiList = GameObject.FindGameObjectsWithTag("poiChage");
 
         foreach(GameObject f in poiList){
              Debug.Log("objeto");
