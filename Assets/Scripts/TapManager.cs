@@ -19,7 +19,9 @@ public class TapManager : MonoBehaviour
     public float MAXSCALE = 5.0F;
     public float minPinchSpeed = 5.0F;
     public float varianceInDistances = 5.0F;
-    //
+
+    public static bool mapPause=false;
+    public GameObject pauseMenu;
 
 
 
@@ -123,4 +125,16 @@ public class TapManager : MonoBehaviour
     }            
     #endif
     
+    public void resume(){ // Tira o menu e volta velocidade normal aqui no tap
+        pauseMenu.SetActive(false);
+        Time.timeScale=1f;
+        mapPause = false;
+    }
+    public void pause(){
+        pauseMenu.SetActive(true);
+        Time.timeScale=0f;
+        mapPause = true;
+    }
+
+
 }

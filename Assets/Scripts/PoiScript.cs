@@ -19,6 +19,8 @@ public class PoiScript: MonoBehaviour
     
     //public TextMeshProUGUI textDesc;
 
+
+
     GameObject description;
 
     // Start is called before the first frame update
@@ -88,27 +90,30 @@ public class PoiScript: MonoBehaviour
     }
     public void OnMouseDown()
     {
-        GameObject[] poiList = GameObject.FindGameObjectsWithTag("poiChage");
-        GameObject[] poiListBike = GameObject.FindGameObjectsWithTag("poiBike");
 
-        foreach (GameObject o in poiList)
-        {
-            o.SendMessage("SetUnpressedColor");
+        if(!TapManager.mapPause){// Se nao estiver pausado
+
+            GameObject[] poiList = GameObject.FindGameObjectsWithTag("poiChage");
+            GameObject[] poiListBike = GameObject.FindGameObjectsWithTag("poiBike");
+
+            foreach (GameObject o in poiList)
+            {
+                o.SendMessage("SetUnpressedColor");
+            }
+
+            foreach (GameObject o in poiListBike)
+            {
+                o.SendMessage("SetUnpressedColor");
+            }
+
+            this.GetComponent<MeshRenderer>().material.color = Color.blue;
+
+            //textDesc.GetComponent<TextMeshProUGUI>().text = textDescription;
+            description.GetComponent<TextMeshProUGUI>().text = textDescription;
         }
-
-        foreach (GameObject o in poiListBike)
-        {
-            o.SendMessage("SetUnpressedColor");
-        }
-
-        this.GetComponent<MeshRenderer>().material.color = Color.blue;
-
-        //textDesc.GetComponent<TextMeshProUGUI>().text = textDescription;
-        description.GetComponent<TextMeshProUGUI>().text = textDescription;
-
-
-
-
 
     }
+
+
+
 }
