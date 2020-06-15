@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using TMPro;
 public class TapManager : MonoBehaviour
 {
     [SerializeField]
@@ -27,6 +27,8 @@ public class TapManager : MonoBehaviour
     public GameObject pauseMenu;
 
     public GameObject panelEscuro;
+
+    public TextMeshProUGUI qtdCharging;
 
     //https://kylewbanks.com/blog/unity3d-panning-and-pinch-to-zoom-camera-with-touch-and-mouse-input
 
@@ -136,6 +138,13 @@ public class TapManager : MonoBehaviour
         botOptions.SetActive(true);
     }
     public void pause(){
+
+        // Vai contar a quantidade e alterar o texto
+        GameObject[] poiList = GameObject.FindGameObjectsWithTag("poiChage");
+        int qtdCarga = poiList.Length;
+        // charging points
+        qtdCharging.GetComponent<TextMeshProUGUI>().text ="charging points ("+qtdCarga.ToString()+")";
+
         pauseMenu.SetActive(true);
         panelEscuro.SetActive(true);
         botOptions.SetActive(false);
