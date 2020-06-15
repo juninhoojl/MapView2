@@ -30,6 +30,8 @@ public class TapManager : MonoBehaviour
 
     public TextMeshProUGUI qtdCharging;
 
+    public TextMeshProUGUI qtdBike;
+
     //https://kylewbanks.com/blog/unity3d-panning-and-pinch-to-zoom-camera-with-touch-and-mouse-input
 
     // Update is called once per frame
@@ -141,9 +143,16 @@ public class TapManager : MonoBehaviour
 
         // Vai contar a quantidade e alterar o texto
         GameObject[] poiList = GameObject.FindGameObjectsWithTag("poiChage");
+
+        GameObject[] poiListBike = GameObject.FindGameObjectsWithTag("poiBike");
+
+
+        int qtdBikep = poiListBike.Length;
         int qtdCarga = poiList.Length;
         // charging points
-        qtdCharging.GetComponent<TextMeshProUGUI>().text ="charging points ("+qtdCarga.ToString()+")";
+        
+        qtdBike.GetComponent<TextMeshProUGUI>().text ="charging points ("+qtdCarga.ToString()+")";
+        qtdCharging.GetComponent<TextMeshProUGUI>().text ="Bike Stations ("+qtdBikep.ToString()+")";
 
         pauseMenu.SetActive(true);
         panelEscuro.SetActive(true);
