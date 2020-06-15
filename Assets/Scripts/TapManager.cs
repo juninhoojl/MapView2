@@ -36,7 +36,6 @@ public class TapManager : MonoBehaviour
 
     // Update is called once per frame
 
-
     #if UNITY_EDITOR
       void Update()
     {
@@ -145,7 +144,6 @@ public class TapManager : MonoBehaviour
         GameObject[] poiList = GameObject.FindGameObjectsWithTag("poiChage");
 
         GameObject[] poiListBike = GameObject.FindGameObjectsWithTag("poiBike");
-
 
         int qtdBikep = poiListBike.Length;
         int qtdCarga = poiList.Length;
