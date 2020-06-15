@@ -21,9 +21,12 @@ public class TapManager : MonoBehaviour
     public float varianceInDistances = 5.0F;
 
     public static bool mapPause=false;
+
+    public GameObject botOptions;
+
     public GameObject pauseMenu;
 
-
+    public GameObject panelEscuro;
 
     //https://kylewbanks.com/blog/unity3d-panning-and-pinch-to-zoom-camera-with-touch-and-mouse-input
 
@@ -127,11 +130,15 @@ public class TapManager : MonoBehaviour
     
     public void resume(){ // Tira o menu e volta velocidade normal aqui no tap
         pauseMenu.SetActive(false);
+        panelEscuro.SetActive(false);
         Time.timeScale=1f;
         mapPause = false;
+        botOptions.SetActive(true);
     }
     public void pause(){
         pauseMenu.SetActive(true);
+        panelEscuro.SetActive(true);
+        botOptions.SetActive(false);
         Time.timeScale=0f;
         mapPause = true;
     }
