@@ -40,9 +40,20 @@ public class MapHandlerScript : MonoBehaviour{
         if (Input.location.status == LocationServiceStatus.Running){
             WorldToTilePos(Input.location.lastData.longitude, Input.location.lastData.latitude, zoom);
         }else{
-            WorldToTilePos(2.122279f, 41.384616f, zoom);    // barcelona
+
+            // pega localizacao do usuario
+
+            //WorldToTilePos(2.122279f, 41.384616f, zoom);    // barcelona
             //EETAC
             //WorldToTilePos(2.186369f, 41.392957f, zoom);  //Casa
+
+            //public static double lonUser = 2.122638f;  //Barclona
+            //public static double latUser = 41.381580f;
+
+            WorldToTilePos((float)UserScript.lonUser, (float)UserScript.latUser, zoom);    // barcelona
+
+
+
         }
 
         GameObject[] poiList = GameObject.FindGameObjectsWithTag("poi");

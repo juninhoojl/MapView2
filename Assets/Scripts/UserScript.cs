@@ -10,14 +10,16 @@ public class UserScript : MonoBehaviour
 
     public GameObject painelForaArea;
 
-    double latUser;
-    double lonUser;
+    public static double lonUser = 2.122638f;  //Barclona
+    public static double latUser = 41.381580f;
+
+    // Uma coisa por vez
 
     public LineRenderer linhaCharge;
 
-
+    public int ultimoAt = 2;
     public LineRenderer linhaPertoBike;
-
+    public LineRenderer linhaPertoCharge;
     public void MapLocation()
     {
         StartCoroutine(Relocation());
@@ -39,15 +41,15 @@ public class UserScript : MonoBehaviour
             }
             else
             {
+
                 // Teste fora de area
                 // lonUser = 2.122638f;  //EETAC
                 //  latUser = 41.0f;
+                //lonUser = 2.122638f;  //Barclona
+               // latUser = 41.381580f;
+                latUser+=0.0008;
+                lonUser+=0.0008;
 
-
-                
-
-                lonUser = 2.122638f;  //Barclona
-                latUser = 41.381580f;
 
                 //lonUser = 2.186369f;  //Casa
                 //latUser = 41.392957f;
@@ -78,7 +80,17 @@ public class UserScript : MonoBehaviour
                 this.transform.position = new Vector3((float)a - 0.5f, (float)b - 0.5f, 0.0f);
                 
                 posLinha();
-                distanciaProx();
+                
+                // Para nao ficar muito pesado (as chances de mudar drasticamente sao minimas)
+                if(ultimoAt == 2){
+                    ultimoAt = 1;
+                    distanciaProxBike();
+                    
+                }else{
+                    ultimoAt = 2;
+                    distanciaProxCharge();
+                }
+                
             }
 
             latlonText.GetComponent<TextMeshProUGUI>().text =latUser.ToString("F6")+","+lonUser.ToString("F6");
@@ -128,6 +140,8 @@ public class UserScript : MonoBehaviour
         linhaCharge.SetPosition(0,new Vector3(xu,yu,-0.01f));
         linhaPertoBike.positionCount=2;
         linhaPertoBike.SetPosition(0,new Vector3(xu,yu,-0.01f));
+        linhaPertoCharge.positionCount=2;
+        linhaPertoCharge.SetPosition(0,new Vector3(xu,yu,-0.01f));
         // Posicao do user na outra linha tb
 
     }
@@ -141,7 +155,10 @@ public class UserScript : MonoBehaviour
         return ((vecponto - vecuser).sqrMagnitude);
     }
 
-    void distanciaProx(){
+    void distanciaProxBike(){
+
+        // A ideia da notificacao eh controlar se a distancia eh menor que o valor
+        // do slider envia senao nao
 
         GameObject[] poiListBike = GameObject.FindGameObjectsWithTag("poiBike");
         bool primeiro = true;
@@ -157,8 +174,7 @@ public class UserScript : MonoBehaviour
                 }
             }
 
-            Debug.Log("Distancia = "+calcDist(o));
-
+            //Debug.Log("Distancia = "+calcDist(o));
             // Escolhe o que tem menor distancia e salva obj
         }
 
@@ -166,6 +182,44 @@ public class UserScript : MonoBehaviour
         float xbikep = vecpontoBike.x;
         float ybikep = vecpontoBike.y;
         linhaPertoBike.SetPosition(1,new Vector3(xbikep,ybikep,-0.01f));
+
+        // Fazer a mesma coisa para os pontos de carregamento de carro
+        // Se possivel colocar uma etiqueta com a distancia
+
+
+    }
+
+
+
+    void distanciaProxCharge(){
+
+        // A ideia da notificacao eh controlar se a distancia eh menor que o valor
+        // do slider envia senao nao
+        
+        GameObject[] poiListCharge = GameObject.FindGameObjectsWithTag("poiChage");
+
+        bool primeiro = true;
+        GameObject maisPertoCharge = new GameObject();
+
+        foreach(GameObject o in poiListCharge)
+        {
+            if(primeiro){
+                maisPertoCharge = o;
+                primeiro = false;
+            }else{
+                if(calcDist(o)<calcDist(maisPertoCharge)){
+                    maisPertoCharge = o;
+                }
+            }
+
+            // Debug.Log("Distancia = "+calcDist(o));
+            // Escolhe o que tem menor distancia e salva obj
+        }
+
+        Vector2 vecpontoCharge = maisPertoCharge.transform.position;
+        float xchargep = vecpontoCharge.x;
+        float ychargep = vecpontoCharge.y;
+        linhaPertoCharge.SetPosition(1,new Vector3(xchargep,ychargep,-0.01f));
 
     }
 
