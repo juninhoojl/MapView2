@@ -13,6 +13,8 @@ public class UserScript : MonoBehaviour
     double latUser;
     double lonUser;
 
+    public LineRenderer linhaCharge;
+
     public void MapLocation()
     {
         StartCoroutine(Relocation());
@@ -38,6 +40,9 @@ public class UserScript : MonoBehaviour
                 // lonUser = 2.122638f;  //EETAC
                 //  latUser = 41.0f;
 
+
+                
+
                 lonUser = 2.122638f;  //Barclona
                 latUser = 41.381580f;
 
@@ -54,6 +59,7 @@ public class UserScript : MonoBehaviour
                 painelForaArea.SetActive(true);
 
             }else{
+
                 painelForaArea.SetActive(false);
                     
                 double a = DrawCubeX(lonUser, TileToWorldPos(x, y, zoom).X, TileToWorldPos(x + 1, y, zoom).X);
@@ -67,7 +73,8 @@ public class UserScript : MonoBehaviour
 
                 Debug.Log("User Position: lon=" + lonUser + ", lat=" + latUser + "//a=" + a + ", b=" + b);
                 this.transform.position = new Vector3((float)a - 0.5f, (float)b - 0.5f, 0.0f);
-
+                
+                posLinha();
             }
 
             latlonText.GetComponent<TextMeshProUGUI>().text =latUser.ToString("F6")+","+lonUser.ToString("F6");
@@ -107,4 +114,42 @@ public class UserScript : MonoBehaviour
         double pixelX = ((targetLong - minLong) / (maxLong - minLong));
         return pixelX;
     }
+
+
+
+    void posLinha(){
+        // Escolher chraging mais proximo
+/*
+        GameObject[] poiList = GameObject.FindGameObjectsWithTag("poiChage");
+
+        if (poiList != null || poiList.Length != 0){ // Se tiver algum objeto
+
+            GameObject proxCharge = poiList[0];
+
+        // O primeiro eh o menor
+            foreach (GameObject o in poiList)
+            {
+                // Se mais perto ele eh o menor objeto
+
+                if((Vector3.Distance(o.transform.position, this.transform.position)) < (Vector3.Distance(proxCharge.transform.position, this.transform.position))){
+                    proxCharge = o;
+                }
+
+            }
+*/
+            float xu = this.transform.position.x;
+            float yu = this.transform.position.y;
+
+            //float xuf = proxCharge.transform.position.x;
+           // float yuf = proxCharge.transform.position.y;
+            linhaCharge.positionCount = 2;
+            linhaCharge.SetPosition(0,new Vector3(xu/2,yu/2,-1));
+            // linhaCharge.SetPosition(0,new Vector3(xu,yu,-1));
+           // linhaCharge.SetPosition(1,new Vector3(xuf,yuf,-1));
+
+      //  }
+
+    }
+
 }
+
