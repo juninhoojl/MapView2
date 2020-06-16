@@ -14,7 +14,6 @@ public class CamFollow : MonoBehaviour
 
     // Logo depois
 
-
     public void AltOpCentraliza(bool devoCent){
         centralizar = devoCent;
     }

@@ -13,7 +13,6 @@ public class MapHandlerScript : MonoBehaviour{
     [SerializeField]
     GameObject centroC;
 
-
     [SerializeField]
     GameObject direitaA;
     [SerializeField]
@@ -34,24 +33,14 @@ public class MapHandlerScript : MonoBehaviour{
 
     public static int zoom = 13;
 
-
     public void Center()
     {
         float lonUser = (float)UserScript.lonUser;
         float latUser = (float)UserScript.latUser;
 
         WorldToTilePos(lonUser, latUser, zoom);
-        StartCoroutine(LoadTile(centerTileX, centerTileY-1, centroA));
-        StartCoroutine(LoadTile(centerTileX+1, centerTileY-1, direitaA));
-        StartCoroutine(LoadTile(centerTileX-1, centerTileY-1, esquerdaA));
 
-        StartCoroutine(LoadTile(centerTileX, centerTileY, centroB));
-        StartCoroutine(LoadTile(centerTileX+1, centerTileY, direitaB));
-        StartCoroutine(LoadTile(centerTileX-1, centerTileY, esquerdaB));
-
-        StartCoroutine(LoadTile(centerTileX, centerTileY+1, centroC));
-        StartCoroutine(LoadTile(centerTileX+1, centerTileY+1, direitaC));
-        StartCoroutine(LoadTile(centerTileX-1, centerTileY+1, esquerdaC));
+        PosicionaTiles();
 
         GameObject[] poiListCharge = GameObject.FindGameObjectsWithTag("poiChage");
         foreach (GameObject o in poiListCharge)
@@ -72,21 +61,10 @@ public class MapHandlerScript : MonoBehaviour{
         //zoom = 15;
         if (Input.location.status == LocationServiceStatus.Running){
             WorldToTilePos(Input.location.lastData.longitude, Input.location.lastData.latitude, zoom);
+       
         }else{
 
-            // pega localizacao do usuario
-
-            //WorldToTilePos(2.122279f, 41.384616f, zoom);    // barcelona
-            //EETAC
-            //WorldToTilePos(2.186369f, 41.392957f, zoom);  //Casa
-
-            //public static double lonUser = 2.122638f;  //Barclona
-            //public static double latUser = 41.381580f;
-
             WorldToTilePos((float)UserScript.lonUser, (float)UserScript.latUser, zoom);    // barcelona
-
-
-
         }
 
         GameObject[] poiList = GameObject.FindGameObjectsWithTag("poi");
@@ -100,30 +78,9 @@ public class MapHandlerScript : MonoBehaviour{
         GameObject objectOpenData = GameObject.Find("Opendata");
         objectOpenData.SendMessage("OpenDataBcn");
 
-        //GameObject objectOpenBike = GameObject.Find("Opendata");
-        //objectOpenBike.SendMessage("OpenDataBike");
-
-
-        StartCoroutine(LoadTile(centerTileX, centerTileY-1, centroA));
-        StartCoroutine(LoadTile(centerTileX+1, centerTileY-1, direitaA));
-        StartCoroutine(LoadTile(centerTileX-1, centerTileY-1, esquerdaA));
-
-        StartCoroutine(LoadTile(centerTileX, centerTileY, centroB));
-        StartCoroutine(LoadTile(centerTileX+1, centerTileY, direitaB));
-        StartCoroutine(LoadTile(centerTileX-1, centerTileY, esquerdaB));
-
-        StartCoroutine(LoadTile(centerTileX, centerTileY+1, centroC));
-        StartCoroutine(LoadTile(centerTileX+1, centerTileY+1, direitaC));
-        StartCoroutine(LoadTile(centerTileX-1, centerTileY+1, esquerdaC));
+        PosicionaTiles();
 
     }
-
-    
-    //public void DownLoadCenterMapTileGps()
-    //{
-    //    WorldToTilePos(41.275250f, 1.987500f, zoom);
-    //    LoadTile(centerTileX, centerTileY, centerTileMap);
-    //}
 
     public void WorldToTilePos(float lon, float lat, int zoom){
         double tileX, tileY;
@@ -155,68 +112,26 @@ public class MapHandlerScript : MonoBehaviour{
 
     public void ZoomIn()
     {
-        //Debug.Log(centerTileX+"ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ-out");
         zoom--;
         if (zoom < 12 ) zoom = 12;
-
-        panelCarregando.SetActive(true);
-
-        WorldToTilePos((float)UserScript.lonUser, (float)UserScript.latUser, zoom);
-
-        StartCoroutine(LoadTile(centerTileX, centerTileY-1, centroA));
-        StartCoroutine(LoadTile(centerTileX+1, centerTileY-1, direitaA));
-        StartCoroutine(LoadTile(centerTileX-1, centerTileY-1, esquerdaA));
-
-        StartCoroutine(LoadTile(centerTileX, centerTileY, centroB));
-        StartCoroutine(LoadTile(centerTileX+1, centerTileY, direitaB));
-        StartCoroutine(LoadTile(centerTileX-1, centerTileY, esquerdaB));
-
-        StartCoroutine(LoadTile(centerTileX, centerTileY+1, centroC));
-        StartCoroutine(LoadTile(centerTileX+1, centerTileY+1, direitaC));
-        StartCoroutine(LoadTile(centerTileX-1, centerTileY+1, esquerdaC));
-
-        //StartCoroutine(LoadTile(centerTileX, centerTileY, centroB));
-        //StartCoroutine(LoadTile(centerTileX + 1, centerTileY, direitaB));
-
-        GameObject[] poiListCharge = GameObject.FindGameObjectsWithTag("poiChage");
-        foreach (GameObject o in poiListCharge)
-        {
-            o.SendMessage("MapLocation");
-        }
-
-        GameObject[] poiListBike = GameObject.FindGameObjectsWithTag("poiBike");
-        foreach (GameObject o in poiListBike)
-        {
-            o.SendMessage("MapLocation");
-        }
-        panelCarregando.SetActive(false);
-
+        AjustaZoom();
     }
-
+    
     public void ZoomOut()
     {
-        //Debug.Log(centerTileX+"ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ-out");
         zoom++;
         if (zoom > 18) zoom = 18;
+        AjustaZoom();
+    }
+
+    void AjustaZoom(){
 
         panelCarregando.SetActive(true);
 
         WorldToTilePos((float)UserScript.lonUser, (float)UserScript.latUser, zoom);
 
-        StartCoroutine(LoadTile(centerTileX, centerTileY-1, centroA));
-        StartCoroutine(LoadTile(centerTileX+1, centerTileY-1, direitaA));
-        StartCoroutine(LoadTile(centerTileX-1, centerTileY-1, esquerdaA));
+        PosicionaTiles();
 
-        StartCoroutine(LoadTile(centerTileX, centerTileY, centroB));
-        StartCoroutine(LoadTile(centerTileX+1, centerTileY, direitaB));
-        StartCoroutine(LoadTile(centerTileX-1, centerTileY, esquerdaB));
-
-        StartCoroutine(LoadTile(centerTileX, centerTileY+1, centroC));
-        StartCoroutine(LoadTile(centerTileX+1, centerTileY+1, direitaC));
-        StartCoroutine(LoadTile(centerTileX-1, centerTileY+1, esquerdaC));
-
-        //StartCoroutine(LoadTile(centerTileX, centerTileY, centroB));
-        //StartCoroutine(LoadTile(centerTileX + 1, centerTileY, direitaB));
 
         GameObject[] poiListCharge = GameObject.FindGameObjectsWithTag("poiChage");
         foreach (GameObject o in poiListCharge)
@@ -231,7 +146,22 @@ public class MapHandlerScript : MonoBehaviour{
         }
 
         panelCarregando.SetActive(false);
-        // Aqui vai parar de mostrar que esta carregando o zoom
 
     }
+    void PosicionaTiles(){
+
+        StartCoroutine(LoadTile(centerTileX, centerTileY-1, centroA));
+        StartCoroutine(LoadTile(centerTileX+1, centerTileY-1, direitaA));
+        StartCoroutine(LoadTile(centerTileX-1, centerTileY-1, esquerdaA));
+
+        StartCoroutine(LoadTile(centerTileX, centerTileY, centroB));
+        StartCoroutine(LoadTile(centerTileX+1, centerTileY, direitaB));
+        StartCoroutine(LoadTile(centerTileX-1, centerTileY, esquerdaB));
+
+        StartCoroutine(LoadTile(centerTileX, centerTileY+1, centroC));
+        StartCoroutine(LoadTile(centerTileX+1, centerTileY+1, direitaC));
+        StartCoroutine(LoadTile(centerTileX-1, centerTileY+1, esquerdaC));
+
+    }
+
 }
