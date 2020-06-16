@@ -8,7 +8,7 @@ public class SetIdioma : MonoBehaviour
 {
     // Start is called before the first frame update
 
-    public TextMeshProUGUI bOpcoes, bOpcoes2, lBikes, lCharge, lNotif, lCentmap, pForaArea;
+    public TextMeshProUGUI bOpcoes, bOpcoes2, lBikes, lCharge, lNotif, lCentmap, pForaArea, lLinhasProx;
     string[] bOptions = new string[] {"Opções", "Opciones", "Opcions", "Options"};
     // Tanto para options quanto para o outro
     string[] tBikes = new string[] {"Sistema de bicicletas públicas","Sistema de bicicletas compartidas","Servei de bicicletes públiques","Bicycle-sharing system"};
@@ -16,6 +16,9 @@ public class SetIdioma : MonoBehaviour
     string[] tNotif = new string[] {"Receber notificações","Recibir notificaciones","Rebre notificacions","Receive notifications"};
     string[] tCentmap = new string[] {"Centralizar no mapa","Centrar en el mapa","Centre al mapa","Center on map"};
     string[] tForaArea = new string[] {"Fora de area","Fuera del área","Fora d'àrea","Out of area"};
+
+    string[] tLinhasProx = new string[] {"Encontrar os mais próximos","Encuentra los más cercanos","Trobar mais propers","Find nearest"};
+
     public static int lingua = 3; // Ingles padrao
     // 0 - Portugues
     // 1 - Espanol
@@ -44,6 +47,7 @@ public class SetIdioma : MonoBehaviour
         lNotif.GetComponent<TextMeshProUGUI>().text = tNotif[lingua];
         lCentmap.GetComponent<TextMeshProUGUI>().text = tCentmap[lingua];
         pForaArea.GetComponent<TextMeshProUGUI>().text = tForaArea[lingua];
+        lLinhasProx.GetComponent<TextMeshProUGUI>().text = tLinhasProx[lingua];
     }
     public void SelectIdioma(int idioma){
         lingua = idioma;

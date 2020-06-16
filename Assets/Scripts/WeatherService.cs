@@ -32,7 +32,6 @@ public class GetInfoHandler : MonoBehaviour {
 
 	public void GetSunSetInfo(){
 		StartCoroutine("SunSetInfo");
-	
 	}
 
 	IEnumerator SunSetInfo(){
@@ -51,25 +50,25 @@ public class GetInfoHandler : MonoBehaviour {
 		SunSetData myData;
 		myData = JsonUtility.FromJson<SunSetData>(www.text);
 
-	char stopAt = ':';
-	int charLocation = myData.results.sunset.IndexOf(stopAt, 0,myData.results.sunset.Length);
-	string hour = myData.results.sunset.Substring(0,charLocation);
-	string substring = myData.results.sunset.Substring(charLocation+1);
+		char stopAt = ':';
+		int charLocation = myData.results.sunset.IndexOf(stopAt, 0,myData.results.sunset.Length);
+		string hour = myData.results.sunset.Substring(0,charLocation);
+		string substring = myData.results.sunset.Substring(charLocation+1);
         Debug.Log("SunSet: " + myData.results.sunset);
         charLocation = substring.IndexOf(stopAt, 0,substring.Length);
-	string minutes = substring.Substring(0,charLocation);
-	substring = myData.results.sunset.Substring(charLocation+1);
+		string minutes = substring.Substring(0,charLocation);
+		substring = myData.results.sunset.Substring(charLocation+1);
 
-	int minutesI = int.Parse(minutes);
-	int hourI 	= int.Parse(hour);
+		int minutesI = int.Parse(minutes);
+		int hourI 	= int.Parse(hour);
 
-	stopAt ='M';
-	charLocation = substring.IndexOf(stopAt,0,substring.Length);
-	char p = 'P';
-	if (substring[charLocation-1]==p)
+		stopAt ='M';
+		charLocation = substring.IndexOf(stopAt,0,substring.Length);
+		char p = 'P';
+		if (substring[charLocation-1]==p)
 			hourI = hourI+12;
 
-	sunSetInfo.GetComponent<Text>().text = hourI+"-"+minutesI;
+		sunSetInfo.GetComponent<Text>().text = hourI+"-"+minutesI;
 
 	}
 

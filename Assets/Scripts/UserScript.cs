@@ -88,42 +88,19 @@ public class UserScript : MonoBehaviour
 
                 posLinha();
                 
-                // Para nao ficar muito pesado (as chances de mudar drasticamente sao minimas)
-                //if(ultimoAt == 2){
-                   // ultimoAt = 1;
+                if(LinhasProximas.habLinhas){
                     distanciaProxBike();
-                    
-              //  }else{
-                 //   ultimoAt = 2;
                     distanciaProxCharge();
-               // }
+                }
 
-
-               // Confere se usuario saiu do mapa.. Se sim reinicia o processo
-
-
-
-                
             }
-            
-
-            
-            //Dentro Tile Centro
-            // el valor de a tiene que estar entre -0.5 i 0.5
-            // el valor de b tiene que estar entre 0.5 i -0.5
-            //Fuera Tile Centro
-            // valor a < -0.5 i mayor 0.5
-            // valor b < -0.5 i mayor 0.5
-            
+        
             if (SaiuMapa())
             {
                 Debug.Log("Center MAp");
                 GameObject map = GameObject.Find("MapHandler");
                 map.GetComponent<MapHandlerScript>().Center();
             }
-            
-            SaiuMapa();
-
 
             latlonText.GetComponent<TextMeshProUGUI>().text =latUser.ToString("F6")+","+lonUser.ToString("F6");
             
