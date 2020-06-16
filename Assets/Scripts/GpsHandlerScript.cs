@@ -36,8 +36,7 @@ public class GpsHandlerScript : MonoBehaviour
         if (Input.location.status == LocationServiceStatus.Failed) {
             print("Unable to determine device location");
             yield break;
-        }
-        else {
+        } else {
             GameObject objectM = GameObject.Find("MapHandler");
             objectM.SendMessage("DownloadMap");
             // Access granted and location value could be retrieved
