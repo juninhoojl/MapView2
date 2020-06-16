@@ -14,4 +14,11 @@ public class ZoomManager : MonoBehaviour
         mapH = GameObject.Find("MapHandler").GetComponent<MapHandlerScript>();
         mapH.ZoomOut();
     }
+
+    public void zoomIn()
+    {
+        mapH = GameObject.Find("MapHandler").GetComponent<MapHandlerScript>();
+        mapH.ZoomIn();
+    }
+
 }

@@ -120,6 +120,44 @@ public class MapHandlerScript : MonoBehaviour{
     }
 
 
+    public void ZoomIn()
+    {
+        Debug.Log(centerTileX+"ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ-out");
+        zoom--;
+        if (zoom < 12 ) zoom = 12;
+
+        WorldToTilePos((float)UserScript.lonUser, (float)UserScript.latUser, zoom);
+
+        StartCoroutine(LoadTile(centerTileX, centerTileY-1, centroA));
+        StartCoroutine(LoadTile(centerTileX+1, centerTileY-1, direitaA));
+        StartCoroutine(LoadTile(centerTileX-1, centerTileY-1, esquerdaA));
+
+        StartCoroutine(LoadTile(centerTileX, centerTileY, centroB));
+        StartCoroutine(LoadTile(centerTileX+1, centerTileY, direitaB));
+        StartCoroutine(LoadTile(centerTileX-1, centerTileY, esquerdaB));
+
+        StartCoroutine(LoadTile(centerTileX, centerTileY+1, centroC));
+        StartCoroutine(LoadTile(centerTileX+1, centerTileY+1, direitaC));
+        StartCoroutine(LoadTile(centerTileX-1, centerTileY+1, esquerdaC));
+
+        //StartCoroutine(LoadTile(centerTileX, centerTileY, centroB));
+        //StartCoroutine(LoadTile(centerTileX + 1, centerTileY, direitaB));
+
+        GameObject[] poiListCharge = GameObject.FindGameObjectsWithTag("poiChage");
+        foreach (GameObject o in poiListCharge)
+        {
+            o.SendMessage("MapLocation");
+        }
+
+        GameObject[] poiListBike = GameObject.FindGameObjectsWithTag("poiBike");
+        foreach (GameObject o in poiListBike)
+        {
+            o.SendMessage("MapLocation");
+        }
+
+
+    }
+
     public void ZoomOut()
     {
         Debug.Log(centerTileX+"ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ-out");
@@ -157,5 +195,4 @@ public class MapHandlerScript : MonoBehaviour{
 
 
     }
-
 }

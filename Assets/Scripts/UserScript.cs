@@ -17,7 +17,7 @@ public class UserScript : MonoBehaviour
 
     public LineRenderer linhaCharge;
 
-    public int ultimoAt = 2;
+    //public int ultimoAt = 2;
     public LineRenderer linhaPertoBike;
     public LineRenderer linhaPertoCharge;
     public void MapLocation()
@@ -82,14 +82,14 @@ public class UserScript : MonoBehaviour
                 posLinha();
                 
                 // Para nao ficar muito pesado (as chances de mudar drasticamente sao minimas)
-                if(ultimoAt == 2){
-                    ultimoAt = 1;
+                //if(ultimoAt == 2){
+                   // ultimoAt = 1;
                     distanciaProxBike();
                     
-                }else{
-                    ultimoAt = 2;
+              //  }else{
+                 //   ultimoAt = 2;
                     distanciaProxCharge();
-                }
+               // }
                 
             }
 
