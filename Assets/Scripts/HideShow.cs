@@ -43,7 +43,7 @@ public class HideShow : MonoBehaviour
             }else{
                //  f.SetActive(true);
                 f.GetComponent<Renderer>().enabled = true;
-                linhaPertoCharge.GetComponent<Renderer>().enabled = false;
+                linhaPertoCharge.GetComponent<Renderer>().enabled = true;
             }
             
         }

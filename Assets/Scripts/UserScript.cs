@@ -10,12 +10,14 @@ public class UserScript : MonoBehaviour
 
     public GameObject painelForaArea;
 
+    private MapHandlerScript mapH;
+
     public static double lonUser = 2.122638f;  //Barclona
     public static double latUser = 41.381580f;
 
     // Uma coisa por vez
 
-    public LineRenderer linhaCharge;
+    // public LineRenderer linhaCharge;
 
     //public int ultimoAt = 2;
     public LineRenderer linhaPertoBike;
@@ -27,6 +29,7 @@ public class UserScript : MonoBehaviour
 
     IEnumerator Relocation()
     {
+
         while(true)
         {
             int x = MapHandlerScript.centerTileX;
@@ -47,10 +50,9 @@ public class UserScript : MonoBehaviour
                 //  latUser = 41.0f;
                 //lonUser = 2.122638f;  //Barclona
                // latUser = 41.381580f;
-               // latUser+=0.0008;
-                //lonUser+=0.0008;
-
-
+                latUser-=0.0008;
+                lonUser+=0.0008;
+                
                 //lonUser = 2.186369f;  //Casa
                 //latUser = 41.392957f;
                 
@@ -64,6 +66,10 @@ public class UserScript : MonoBehaviour
                 painelForaArea.SetActive(true);
 
             }else{
+
+
+                mapH = GameObject.Find("MapHandler").GetComponent<MapHandlerScript>();
+                mapH.DownloadMap();
 
                 painelForaArea.SetActive(false);
                     
@@ -136,8 +142,8 @@ public class UserScript : MonoBehaviour
         // Somente lado do usuario
         float xu = this.transform.position.x;
         float yu = this.transform.position.y;
-        linhaCharge.positionCount = 2;
-        linhaCharge.SetPosition(0,new Vector3(xu,yu,-0.01f));
+        //linhaCharge.positionCount = 2;
+        //linhaCharge.SetPosition(0,new Vector3(xu,yu,-0.01f));
         linhaPertoBike.positionCount=2;
         linhaPertoBike.SetPosition(0,new Vector3(xu,yu,-0.01f));
         linhaPertoCharge.positionCount=2;
@@ -188,7 +194,6 @@ public class UserScript : MonoBehaviour
 
 
     }
-
 
 
     void distanciaProxCharge(){

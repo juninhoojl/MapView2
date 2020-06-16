@@ -122,7 +122,7 @@ public class MapHandlerScript : MonoBehaviour{
 
     public void ZoomIn()
     {
-        Debug.Log(centerTileX+"ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ-out");
+        //Debug.Log(centerTileX+"ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ-out");
         zoom--;
         if (zoom < 12 ) zoom = 12;
 
@@ -160,7 +160,7 @@ public class MapHandlerScript : MonoBehaviour{
 
     public void ZoomOut()
     {
-        Debug.Log(centerTileX+"ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ-out");
+        //Debug.Log(centerTileX+"ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ-out");
         zoom++;
         if (zoom > 18) zoom = 18;
 

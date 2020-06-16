@@ -22,7 +22,7 @@ public class PoiScript: MonoBehaviour
     public Texture bikeSelected;
     public Texture bikeNormal;
 
-    public LineRenderer linhaCharge;
+    // public LineRenderer linhaCharge;
 
     GameObject description;
 
@@ -115,11 +115,12 @@ public class PoiScript: MonoBehaviour
             //this.GetComponent<MeshRenderer>().material.color = Color.blue;
             //textDesc.GetComponent<TextMeshProUGUI>().text = textDescription;
             description.GetComponent<TextMeshProUGUI>().text = textDescription;
-            posLinha();
+            //posLinha();
         }
 
     }
 
+/*
     void posLinha(){
         
         GameObject linhades = GameObject.Find("LINHA");
@@ -130,5 +131,5 @@ public class PoiScript: MonoBehaviour
         linhaCharge.positionCount = 2;
         linhaCharge.SetPosition(1,new Vector3(xu,yu,-0.01f));
     }
-
+*/
 }
