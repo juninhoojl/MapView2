@@ -60,6 +60,7 @@
      <Compile Include="Assets\Scripts\MapHandlerScript.cs" />
      <Compile Include="Assets\Scripts\OpenDataScript.cs" />
      <Compile Include="Assets\Scripts\PoiScript.cs" />
+     <Compile Include="Assets\Scripts\SetIdioma.cs" />
      <Compile Include="Assets\Scripts\TapManager.cs" />
      <Compile Include="Assets\Scripts\UserScript.cs" />
      <Compile Include="Assets\Scripts\WeatherService.cs" />
@@ -97,6 +98,15 @@
  </Reference>
  <Reference Include="Unity.Analytics.DataPrivacy">
  <HintPath>/Users/joseluizjunior/Documents/SCIOTRA/Proyecto-IOT/MapView2/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.Notifications">
+ <HintPath>/Users/joseluizjunior/Documents/SCIOTRA/Proyecto-IOT/MapView2/Library/ScriptAssemblies/Unity.Notifications.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.Notifications.iOS">
+ <HintPath>/Users/joseluizjunior/Documents/SCIOTRA/Proyecto-IOT/MapView2/Library/ScriptAssemblies/Unity.Notifications.iOS.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.Notifications.Android">
+ <HintPath>/Users/joseluizjunior/Documents/SCIOTRA/Proyecto-IOT/MapView2/Library/ScriptAssemblies/Unity.Notifications.Android.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.AIModule">
  <HintPath>/Applications/Unity/Hub/Editor/2018.4.18f1/Unity.app/Contents/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
