@@ -34,6 +34,39 @@ public class MapHandlerScript : MonoBehaviour{
 
     public static int zoom = 13;
 
+
+    public void Center()
+    {
+        float lonUser = (float)UserScript.lonUser;
+        float latUser = (float)UserScript.latUser;
+
+        WorldToTilePos(lonUser, latUser, zoom);
+        StartCoroutine(LoadTile(centerTileX, centerTileY-1, centroA));
+        StartCoroutine(LoadTile(centerTileX+1, centerTileY-1, direitaA));
+        StartCoroutine(LoadTile(centerTileX-1, centerTileY-1, esquerdaA));
+
+        StartCoroutine(LoadTile(centerTileX, centerTileY, centroB));
+        StartCoroutine(LoadTile(centerTileX+1, centerTileY, direitaB));
+        StartCoroutine(LoadTile(centerTileX-1, centerTileY, esquerdaB));
+
+        StartCoroutine(LoadTile(centerTileX, centerTileY+1, centroC));
+        StartCoroutine(LoadTile(centerTileX+1, centerTileY+1, direitaC));
+        StartCoroutine(LoadTile(centerTileX-1, centerTileY+1, esquerdaC));
+
+        GameObject[] poiListCharge = GameObject.FindGameObjectsWithTag("poiChage");
+        foreach (GameObject o in poiListCharge)
+        {
+            o.SendMessage("MapLocation");
+        }
+
+        GameObject[] poiListBike = GameObject.FindGameObjectsWithTag("poiBike");
+        foreach (GameObject o in poiListBike)
+        {
+            o.SendMessage("MapLocation");
+        }
+
+    }
+
     public void DownloadMap() {
         // zoom vai variar de 10 ate 15
         //zoom = 15;

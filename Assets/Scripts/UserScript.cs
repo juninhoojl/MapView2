@@ -50,8 +50,8 @@ public class UserScript : MonoBehaviour
                 //  latUser = 41.0f;
                 //lonUser = 2.122638f;  //Barclona
                // latUser = 41.381580f;
-               // latUser-=0.0008;
-               // lonUser+=0.0008;
+               latUser-=0.0008;
+               lonUser+=0.0008;
                 
                 //lonUser = 2.186369f;  //Casa
                 //latUser = 41.392957f;
@@ -85,6 +85,7 @@ public class UserScript : MonoBehaviour
                 Debug.Log("User Position: lon=" + lonUser + ", lat=" + latUser + "//a=" + a + ", b=" + b);
                 this.transform.position = new Vector3((float)a - 0.5f, (float)b - 0.5f, 0.0f);
                 
+
                 posLinha();
                 
                 // Para nao ficar muito pesado (as chances de mudar drasticamente sao minimas)
@@ -96,8 +97,33 @@ public class UserScript : MonoBehaviour
                  //   ultimoAt = 2;
                     distanciaProxCharge();
                // }
+
+
+               // Confere se usuario saiu do mapa.. Se sim reinicia o processo
+
+
+
                 
             }
+            
+
+            
+            //Dentro Tile Centro
+            // el valor de a tiene que estar entre -0.5 i 0.5
+            // el valor de b tiene que estar entre 0.5 i -0.5
+            //Fuera Tile Centro
+            // valor a < -0.5 i mayor 0.5
+            // valor b < -0.5 i mayor 0.5
+            
+            if (SaiuMapa())
+            {
+                Debug.Log("Center MAp");
+                GameObject map = GameObject.Find("MapHandler");
+                map.GetComponent<MapHandlerScript>().Center();
+            }
+            
+            SaiuMapa();
+
 
             latlonText.GetComponent<TextMeshProUGUI>().text =latUser.ToString("F6")+","+lonUser.ToString("F6");
             
@@ -110,6 +136,18 @@ public class UserScript : MonoBehaviour
         public double Y;
     }
 
+    public bool SaiuMapa(){
+
+        float xu = this.transform.position.x;
+        float yu = this.transform.position.y;
+
+        if((xu<-0.5) || (xu>0.5) || (yu<0.5) || (yu>0.5)){
+            return true;
+        }else{
+            return false;
+        }
+
+    }
 
     // p.X -> longitud
     // p.Y -> latitud
