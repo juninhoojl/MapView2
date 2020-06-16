@@ -21,11 +21,11 @@ public class CamFollow : MonoBehaviour
     void LateUpdate(){
         
         // Vai conferir se o usuario quer que fique centralizando ou nao
-
-        tempVec3.x = target.position.x;
-        tempVec3.y = target.position.y;
-        tempVec3.z = this.transform.position.z;
-        this.transform.position = tempVec3;
-
+        if(centralizar){
+            tempVec3.x = target.position.x;
+            tempVec3.y = target.position.y;
+            tempVec3.z = this.transform.position.z;
+            this.transform.position = tempVec3;
+        }
     }
 }
