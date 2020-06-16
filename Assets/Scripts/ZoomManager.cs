@@ -8,11 +8,14 @@ public class ZoomManager : MonoBehaviour
 
     private MapHandlerScript mapH;
 
+
+
     // Update is called once per frame
     public void zoomOut()
     {
         mapH = GameObject.Find("MapHandler").GetComponent<MapHandlerScript>();
         mapH.ZoomOut();
+    
     }
 
     public void zoomIn()

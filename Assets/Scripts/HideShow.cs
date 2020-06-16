@@ -8,6 +8,7 @@ public class HideShow : MonoBehaviour
     public LineRenderer linhaPertoBike;
     public LineRenderer linhaPertoCharge;
 
+
     public void ShowObjects(bool valor){
 
         GameObject[] poiList = GameObject.FindGameObjectsWithTag("poiBike");

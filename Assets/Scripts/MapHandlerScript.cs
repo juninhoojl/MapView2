@@ -29,10 +29,10 @@ public class MapHandlerScript : MonoBehaviour{
     [SerializeField]
     GameObject esquerdaC;
 
-
+    public GameObject panelCarregando;
     public static int centerTileX, centerTileY;
 
-    public static int zoom = 12;
+    public static int zoom = 13;
 
     public void DownloadMap() {
         // zoom vai variar de 10 ate 15
@@ -126,6 +126,8 @@ public class MapHandlerScript : MonoBehaviour{
         zoom--;
         if (zoom < 12 ) zoom = 12;
 
+        panelCarregando.SetActive(true);
+
         WorldToTilePos((float)UserScript.lonUser, (float)UserScript.latUser, zoom);
 
         StartCoroutine(LoadTile(centerTileX, centerTileY-1, centroA));
@@ -154,7 +156,7 @@ public class MapHandlerScript : MonoBehaviour{
         {
             o.SendMessage("MapLocation");
         }
-
+        panelCarregando.SetActive(false);
 
     }
 
@@ -164,6 +166,8 @@ public class MapHandlerScript : MonoBehaviour{
         zoom++;
         if (zoom > 18) zoom = 18;
 
+        panelCarregando.SetActive(true);
+
         WorldToTilePos((float)UserScript.lonUser, (float)UserScript.latUser, zoom);
 
         StartCoroutine(LoadTile(centerTileX, centerTileY-1, centroA));
@@ -193,6 +197,8 @@ public class MapHandlerScript : MonoBehaviour{
             o.SendMessage("MapLocation");
         }
 
+        panelCarregando.SetActive(false);
+        // Aqui vai parar de mostrar que esta carregando o zoom
 
     }
 }

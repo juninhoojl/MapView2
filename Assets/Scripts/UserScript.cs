@@ -50,8 +50,8 @@ public class UserScript : MonoBehaviour
                 //  latUser = 41.0f;
                 //lonUser = 2.122638f;  //Barclona
                // latUser = 41.381580f;
-                latUser-=0.0008;
-                lonUser+=0.0008;
+               // latUser-=0.0008;
+               // lonUser+=0.0008;
                 
                 //lonUser = 2.186369f;  //Casa
                 //latUser = 41.392957f;
@@ -68,8 +68,8 @@ public class UserScript : MonoBehaviour
             }else{
 
 
-                mapH = GameObject.Find("MapHandler").GetComponent<MapHandlerScript>();
-                mapH.DownloadMap();
+                //mapH = GameObject.Find("MapHandler").GetComponent<MapHandlerScript>();
+                //mapH.DownloadMap();
 
                 painelForaArea.SetActive(false);
                     
