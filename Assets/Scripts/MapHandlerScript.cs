@@ -32,7 +32,7 @@ public class MapHandlerScript : MonoBehaviour{
 
     public static int centerTileX, centerTileY;
 
-    public static int zoom = 15;
+    public static int zoom = 12;
 
     public void DownloadMap() {
         // zoom vai variar de 10 ate 15
@@ -118,4 +118,44 @@ public class MapHandlerScript : MonoBehaviour{
             quadTile.GetComponent<MeshRenderer>().material.mainTexture = DownloadHandlerTexture.GetContent(www);
         } 
     }
+
+
+    public void ZoomOut()
+    {
+        Debug.Log(centerTileX+"ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ-out");
+        zoom++;
+        if (zoom > 18) zoom = 18;
+
+        WorldToTilePos((float)UserScript.lonUser, (float)UserScript.latUser, zoom);
+
+        StartCoroutine(LoadTile(centerTileX, centerTileY-1, centroA));
+        StartCoroutine(LoadTile(centerTileX+1, centerTileY-1, direitaA));
+        StartCoroutine(LoadTile(centerTileX-1, centerTileY-1, esquerdaA));
+
+        StartCoroutine(LoadTile(centerTileX, centerTileY, centroB));
+        StartCoroutine(LoadTile(centerTileX+1, centerTileY, direitaB));
+        StartCoroutine(LoadTile(centerTileX-1, centerTileY, esquerdaB));
+
+        StartCoroutine(LoadTile(centerTileX, centerTileY+1, centroC));
+        StartCoroutine(LoadTile(centerTileX+1, centerTileY+1, direitaC));
+        StartCoroutine(LoadTile(centerTileX-1, centerTileY+1, esquerdaC));
+
+        //StartCoroutine(LoadTile(centerTileX, centerTileY, centroB));
+        //StartCoroutine(LoadTile(centerTileX + 1, centerTileY, direitaB));
+
+        GameObject[] poiListCharge = GameObject.FindGameObjectsWithTag("poiChage");
+        foreach (GameObject o in poiListCharge)
+        {
+            o.SendMessage("MapLocation");
+        }
+
+        GameObject[] poiListBike = GameObject.FindGameObjectsWithTag("poiBike");
+        foreach (GameObject o in poiListBike)
+        {
+            o.SendMessage("MapLocation");
+        }
+
+
+    }
+
 }

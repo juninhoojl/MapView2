@@ -27,7 +27,7 @@ public class UserScript : MonoBehaviour
 
     IEnumerator Relocation()
     {
-        for (; ; )
+        while(true)
         {
             int x = MapHandlerScript.centerTileX;
             int y = MapHandlerScript.centerTileY;
@@ -47,8 +47,8 @@ public class UserScript : MonoBehaviour
                 //  latUser = 41.0f;
                 //lonUser = 2.122638f;  //Barclona
                // latUser = 41.381580f;
-                latUser+=0.0008;
-                lonUser+=0.0008;
+               // latUser+=0.0008;
+                //lonUser+=0.0008;
 
 
                 //lonUser = 2.186369f;  //Casa
@@ -95,7 +95,7 @@ public class UserScript : MonoBehaviour
 
             latlonText.GetComponent<TextMeshProUGUI>().text =latUser.ToString("F6")+","+lonUser.ToString("F6");
             
-            yield return new WaitForSeconds(3);
+            yield return new WaitForSeconds(2);
         }
     }
     public struct Point

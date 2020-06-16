@@ -15,6 +15,7 @@ public class GpsHandlerScript : MonoBehaviour
         // First, check if user has location service enabled
         if (!Input.location.isEnabledByUser)
             yield break;
+        
         // Start service before querying location
         Input.location.Start();
 

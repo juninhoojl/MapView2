@@ -53,6 +53,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\CamFollow.cs" />
      <Compile Include="Assets\Scripts\GpsHandlerScript.cs" />
      <Compile Include="Assets\Scripts\HideShow.cs" />
      <Compile Include="Assets\Scripts\MainMenu.cs" />
@@ -62,6 +63,7 @@
      <Compile Include="Assets\Scripts\TapManager.cs" />
      <Compile Include="Assets\Scripts\UserScript.cs" />
      <Compile Include="Assets\Scripts\WeatherService.cs" />
+     <Compile Include="Assets\Scripts\ZoomManager.cs" />
      <Compile Include="Assets\UnityPackages\JsonNetSample\JsonNetSample.cs" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface-Mobile.shader" />
      <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
