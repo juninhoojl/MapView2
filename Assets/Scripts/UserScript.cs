@@ -85,13 +85,11 @@ public class UserScript : MonoBehaviour
                 Debug.Log("User Position: lon=" + lonUser + ", lat=" + latUser + "//a=" + a + ", b=" + b);
                 this.transform.position = new Vector3((float)a - 0.5f, (float)b - 0.5f, 0.0f);
                 
-
                 posLinha();
                 
-                if(LinhasProximas.habLinhas){
-                    distanciaProxBike();
-                    distanciaProxCharge();
-                }
+                distanciaProxBike();
+                distanciaProxCharge();
+
 
             }
         
