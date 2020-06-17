@@ -176,13 +176,17 @@ public class TapManager : MonoBehaviour
     }
     public void pauseTempo(){
 
+        // Vai requisitar o Json
+        GameObject getTempo = GameObject.Find("TempoOBJ");
+        getTempo.GetComponent<TempoInfo>().GetInfo();
+
         PanelInfoTempo.SetActive(true);
         panelEscuro.SetActive(true);
         botInfo.SetActive(false);
         botOptions.SetActive(false);
         Time.timeScale=0f;
         mapPause = true;
-        
+
     }
 
 }

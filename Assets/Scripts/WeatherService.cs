@@ -40,6 +40,8 @@ public class GetInfoHandler : MonoBehaviour {
 		yield return www;
 
         JObject obj = JObject.Parse(www.text);
+
+
         string sunset = (string)obj["results"]["sunset"];
         string sunrise = (string)obj["results"]["sunrise"];
         Debug.Log("sunset: " + sunset);

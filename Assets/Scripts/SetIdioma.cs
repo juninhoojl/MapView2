@@ -54,10 +54,8 @@ public class SetIdioma : MonoBehaviour
         lNas.GetComponent<TextMeshProUGUI>().text = tNasc[lingua];
         lPor.GetComponent<TextMeshProUGUI>().text = tPor[lingua];
         lDia.GetComponent<TextMeshProUGUI>().text = tDur[lingua];
-
         bInfo.GetComponent<TextMeshProUGUI>().text = tInfo[lingua];
         bInfo2.GetComponent<TextMeshProUGUI>().text = tInfo[lingua];
-
 
     }
 
