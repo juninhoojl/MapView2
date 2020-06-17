@@ -60,18 +60,18 @@ public class UserScript : MonoBehaviour
 
             // Confere se esta nos intervalos de operacao
 
-            if(latUser > 41.471350 || latUser < 41.317801 || lonUser >2.234448 || lonUser < 2.058771){
+            //if(latUser > 41.471350 || latUser < 41.317801 || lonUser >2.234448 || lonUser < 2.058771){
 
                 // Fora de area
-                painelForaArea.SetActive(true);
+                //painelForaArea.SetActive(true);
 
-            }else{
+           // }else{
 
 
                 //mapH = GameObject.Find("MapHandler").GetComponent<MapHandlerScript>();
                 //mapH.DownloadMap();
 
-                painelForaArea.SetActive(false);
+                //painelForaArea.SetActive(false);
                     
                 double a = DrawCubeX(lonUser, TileToWorldPos(x, y, zoom).X, TileToWorldPos(x + 1, y, zoom).X);
                 double b = DrawCubeY(latUser, TileToWorldPos(x, y + 1, zoom).Y, TileToWorldPos(x, y, zoom).Y);
@@ -91,7 +91,7 @@ public class UserScript : MonoBehaviour
                 distanciaProxCharge();
 
 
-            }
+           // }
         
             if (SaiuMapa())
             {
