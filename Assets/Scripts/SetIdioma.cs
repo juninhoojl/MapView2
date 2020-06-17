@@ -8,7 +8,7 @@ public class SetIdioma : MonoBehaviour
 {
     // Start is called before the first frame update
 
-    public TextMeshProUGUI bOpcoes, bOpcoes2, lBikes, lCharge, lNotif, lCentmap, pForaArea, lLinhasProx;
+    public TextMeshProUGUI bOpcoes, bOpcoes2, lBikes, lCharge, lNotif, lCentmap, pForaArea, lLinhasProx, lNas, lPor, lDia, bInfo, bInfo2;
     string[] bOptions = new string[] {"Opções", "Opciones", "Opcions", "Options"};
     // Tanto para options quanto para o outro
     string[] tBikes = new string[] {"Sistema de bicicletas públicas","Sistema de bicicletas compartidas","Servei de bicicletes públiques","Bicycle-sharing system"};
@@ -16,9 +16,12 @@ public class SetIdioma : MonoBehaviour
     string[] tNotif = new string[] {"Receber notificações","Recibir notificaciones","Rebre notificacions","Receive notifications"};
     string[] tCentmap = new string[] {"Centralizar no mapa","Centrar en el mapa","Centre al mapa","Center on map"};
     string[] tForaArea = new string[] {"Fora de area","Fuera del área","Fora d'àrea","Out of area"};
-
     string[] tLinhasProx = new string[] {"Encontrar os mais próximos","Encuentra los más cercanos","Trobar mais propers","Find nearest"};
-
+    string[] tNasc = new string[] {"Nascer do sol","Amanecer","Sortida del sol","Sunrise"};
+    string[] tPor = new string[] {"Pôr do sol","Puesta de sol","Capvespre","Sunset"};
+    string[] tDur = new string[] {"Duração do dia","Dia largo","Durada del dia","Day length"};
+    string[] tInfo = new string[] {"Informações","Informaciones","Informació","Informations"};
+  
     public static int lingua = 3; // Ingles padrao
     // 0 - Portugues
     // 1 - Espanol
@@ -48,7 +51,16 @@ public class SetIdioma : MonoBehaviour
         lCentmap.GetComponent<TextMeshProUGUI>().text = tCentmap[lingua];
         pForaArea.GetComponent<TextMeshProUGUI>().text = tForaArea[lingua];
         lLinhasProx.GetComponent<TextMeshProUGUI>().text = tLinhasProx[lingua];
+        lNas.GetComponent<TextMeshProUGUI>().text = tNasc[lingua];
+        lPor.GetComponent<TextMeshProUGUI>().text = tPor[lingua];
+        lDia.GetComponent<TextMeshProUGUI>().text = tDur[lingua];
+
+        bInfo.GetComponent<TextMeshProUGUI>().text = tInfo[lingua];
+        bInfo2.GetComponent<TextMeshProUGUI>().text = tInfo[lingua];
+
+
     }
+
     public void SelectIdioma(int idioma){
         lingua = idioma;
         alterIdioma();

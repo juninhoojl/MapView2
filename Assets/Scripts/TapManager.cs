@@ -22,9 +22,11 @@ public class TapManager : MonoBehaviour
 
     public static bool mapPause=false;
 
-    public GameObject botOptions;
+    public GameObject botOptions, botInfo;
 
     public GameObject pauseMenu;
+
+    public GameObject PanelInfoTempo;
 
     public GameObject panelEscuro;
 
@@ -137,6 +139,7 @@ public class TapManager : MonoBehaviour
         Time.timeScale=1f;
         mapPause = false;
         botOptions.SetActive(true);
+        botInfo.SetActive(true);
     }
     public void pause(){
 
@@ -155,9 +158,31 @@ public class TapManager : MonoBehaviour
         pauseMenu.SetActive(true);
         panelEscuro.SetActive(true);
         botOptions.SetActive(false);
+        botInfo.SetActive(false);
         Time.timeScale=0f;
         mapPause = true;
     }
 
+
+    public void resumeTempo(){ // Tira o menu e volta velocidade normal aqui no tap
+
+        PanelInfoTempo.SetActive(false);
+        panelEscuro.SetActive(false);
+        Time.timeScale=1f;
+        mapPause = false;
+        botOptions.SetActive(true);
+        botInfo.SetActive(true);
+
+    }
+    public void pauseTempo(){
+
+        PanelInfoTempo.SetActive(true);
+        panelEscuro.SetActive(true);
+        botInfo.SetActive(false);
+        botOptions.SetActive(false);
+        Time.timeScale=0f;
+        mapPause = true;
+        
+    }
 
 }
